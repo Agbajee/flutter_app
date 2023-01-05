@@ -9,8 +9,20 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Hello Flutter", textDirection: TextDirection.ltr),
+    return const Material(
+      color: Colors.deepOrange,
+      child: Center(
+        child: Text(
+           "Home Page",
+           textDirection: TextDirection.ltr,
+           style: TextStyle(
+             fontSize: 32,
+             color: Colors.white,
+             fontWeight: FontWeight.w900,
+           ),
+        )
+      ),
+        
     );
   }
 }
