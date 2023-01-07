@@ -11,6 +11,7 @@ class MyAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: 70,
           elevation: 1,
           backgroundColor: const Color(0xFFFFFFFF),
           leading: const IconButton(
@@ -21,12 +22,11 @@ class MyAppBar extends StatelessWidget {
             ),
             onPressed: null,
           ),
-          title: Text(
-            appTitles,
-            style: TextStyle(
-              fontSize: 28,
-              color: Colors.deepOrange,
-              fontWeight: FontWeight.w700,
+          title: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Image.asset(
+              "https://icons.veryicon.com/png/o/miscellaneous/linear-icon-20/people-28.png",
+              width: 20,
             ),
           ),
           centerTitle: true,
@@ -105,13 +105,34 @@ class MyAppBar extends StatelessWidget {
   }
 }
 
+class AddNewButton extends StatelessWidget {
+  const AddNewButton({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {
+        final snackBar = SnackBar(
+          backgroundColor: Colors.green,
+          content: Text('logged in successfully'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      },
+      backgroundColor: Color(0xFF2e7d32),
+      elevation: 15,
+      child: Icon(
+        Icons.add,
+        size: 50.0,
+      ),
+    );
+  }
+}
+
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // debugPrint('Custom Button tapped');
         final snackBar = SnackBar(
           backgroundColor: Colors.green,
           content: Text('logged in successfully'),
@@ -129,7 +150,7 @@ class CustomButton extends StatelessWidget {
             width: 2,
           ),
         ),
-        child: Text('Sign in',
+        child: Text('Sign In',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w900,
